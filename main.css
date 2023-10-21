@@ -40,3 +40,20 @@ img {
     top: 10%;
     transform: translate(-50%, -50%);
 }
+
+#input-container {
+    color: #565869;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#input-container input {
+    width: 100%; /* Prend toute la largeur disponible */
+    font-size: 1.5em; /* Ajustez la taille de la police selon vos besoins */
+}
