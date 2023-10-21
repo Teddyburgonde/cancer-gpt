@@ -1,25 +1,73 @@
-// main.js
+document.getElementById('user-input').addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+function appendMessageWithDelay(sender, message) {
+    const chatContainer = document.getElementById('chat-container');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = sender;
+    messageDiv.style.color = 'white';
+    messageDiv.style.fontWeight = 'bold';
+    chatContainer.appendChild(messageDiv);
+
+    let index = 0;
+
+    function addLetter() {
+        if (index < message.length) {
+            messageDiv.textContent += message.charAt(index);
+            index++;
+            // Ajouter un délai (vous pouvez ajuster la valeur en fonction de la vitesse d'affichage)
+            setTimeout(addLetter, 20);
+        } else {
+            // Faites défiler vers le bas pour afficher le dernier message
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    }
+
+    // Commencer l'ajout lettre par lettre
+    addLetter();
+}
 
 function sendMessage() {
     const userInput = document.getElementById('user-input').value;
-    appendMessage('user', userInput);
-    document.getElementById('user-input').value = '';
+
+    // Effacer l'ancienne réponse
+    document.getElementById('chat-container').innerHTML = '';
+
+    // Ajouter le nouveau message utilisateur
+    appendMessageWithDelay('user', userInput);
 
     // Simuler une réponse du chatbot (vous pouvez remplacer cette logique par une API de chatbot réelle)
     const botResponse = getBotResponse(userInput);
-    appendMessage('bot', botResponse);
+
+    // Ajouter la nouvelle réponse du bot lettre par lettre
+    appendMessageWithDelay('bot', botResponse);
+
+    // Effacer le champ de saisie utilisateur
+    document.getElementById('user-input').value = '';
 }
 
 function appendMessage(sender, message) {
     const chatContainer = document.getElementById('chat-container');
     const messageDiv = document.createElement('div');
     messageDiv.className = sender;
+
+    // Ajouter des styles pour le texte en blanc et en gras
+    messageDiv.style.color = 'white';
+    messageDiv.style.fontWeight = 'bold';
+    messageDiv.style.fontSize = '20px';
+
     messageDiv.textContent = `${sender}: ${message}`;
+
+    // Ajouter le nouveau message en bas du conteneur
     chatContainer.appendChild(messageDiv);
 
     // Faites défiler vers le bas pour afficher le dernier message
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
+
 
 function getBotResponse(userInput) {
     // Logique du chatbot simple - réponses pré-définies
@@ -28,6 +76,9 @@ function getBotResponse(userInput) {
     }  
     else if (userInput.toLowerCase().includes('tumeur')) {
         return "Une masse de tissu formée par une croissance anormale de cellules, pouvant être bénigne (non cancéreuse) ou maligne (cancéreuse)."
+    }
+    else if (userInput.toLowerCase().includes('cancer')) {
+        return "Le cancer est une maladie caractérisée par une croissance anormale et incontrôlée de cellules dans le corps."
     }
     else if (userInput.toLowerCase().includes('metastase')) {
         return "La propagation de cellules cancéreuses à partir de leur site d'origine vers d'autres parties du corps."
@@ -124,7 +175,39 @@ function getBotResponse(userInput) {
         return "Un gene dont les mutations peuvent contribuer au développement du cancer.";
     } else if (userInput.toLowerCase().includes('paraneoplasique')) {
         return "Une affection qui se produit à distance d'une tumeur mais est associée à celle-ci, souvent observée dans le cancer.";
+    } else if (userInput.toLowerCase().includes('immunoglobuline')) {
+        return "Les immunoglobulines, aussi appelées anticorps, sont des protéines produites par le système immunitaire pour aider à défendre le corps contre les envahisseurs étrangers tels que les bactéries et les virus. Elles jouent un rôle clé en identifiant ces agents indésirables et en contribuant à les neutraliser, protégeant ainsi l'organisme contre les infections et les maladies."
+    } else if (userInput.toLowerCase().includes('inflammation')) {
+            return "Une réponse du corps à une blessure ou à une infection, caractérisée par des rougeurs, des gonflements et des douleurs.";
+    } else if (userInput.toLowerCase().includes('antigène')) {
+            return "Une substance étrangère qui peut déclencher une réponse du système immunitaire, souvent la cible des anticorps.";
+    } else if (userInput.toLowerCase().includes('vaccin')) {
+            return "Une substance introduite dans le corps pour stimuler le système immunitaire et fournir une protection contre certaines maladies.";
+    } else if (userInput.toLowerCase().includes('bactérie')) {
+            return "Des organismes unicellulaires pouvant être bénéfiques ou nuisibles, certaines causant des infections.";
+    } else if (userInput.toLowerCase().includes('virus')) {
+            return "Des agents infectieux composés d'acide nucléique entouré d'une enveloppe protéique, nécessitant une cellule hôte pour se reproduire.";
+    } else if (userInput.toLowerCase().includes('cellule')) {
+        return "l'unité de base de la vie, capable de se reproduire et d'accomplir diverses fonctions dans les organismes vivants.";
+    } else if (userInput.toLowerCase().includes('adn')) {
+        return "l'acide désoxyribonucléique, une molécule portant l'information génétique dans les cellules.";
+    } else if (userInput.toLowerCase().includes('arn')) {
+        return "l'acide ribonucléique, une molécule impliquée dans la transmission de l'information génétique et la synthèse des protéines.";
+    } else if (userInput.toLowerCase().includes('enzyme')) {
+        return "une protéine catalysant des réactions chimiques dans le corps, essentielle à de nombreux processus biologiques.";
+    } else if (userInput.toLowerCase().includes('mutation')) {
+        return "un changement dans la séquence d'adn, pouvant conduire à des variations génétiques.";
+    } else if (userInput.toLowerCase().includes('microbe')) {
+        return "un organisme microscopique, y compris les bactéries et les virus, souvent associé à des infections.";
+    } else if (userInput.toLowerCase().includes('gene')) {
+        return "une séquence d'adn qui code pour une caractéristique particulière, l'unité de l'hérédité.";
+    } else if (userInput.toLowerCase().includes('organe')) {
+        return "une structure composée de plusieurs tissus travaillant ensemble pour accomplir une fonction spécifique dans le corps.";
+    } else if (userInput.toLowerCase().includes('hormone')) {
+        return "une substance chimique produite par les glandes endocrines, régulant divers processus biologiques dans le corps.";
+    } else if (userInput.toLowerCase().includes('infection')) {
+        return "la pénétration et la multiplication d'organismes pathogènes, tels que les bactéries ou les virus, dans le corps.";
     } else {
-        return "Désolé, je suis une version beta, pour l'instant je ne connais pas encore ce mot,Pouvez-vous écrire un autre mot ?";
+        return "Désolé, je suis une version bêta. Pour l'instant, je ne connais pas encore ce mot. Pouvez-vous en essayer un autre ?";
     }
 }

@@ -57,3 +57,12 @@ img {
     width: 100%; /* Prend toute la largeur disponible */
     font-size: 1.5em; /* Ajustez la taille de la police selon vos besoins */
 }
+
+#chat-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* couleur de fond du conteneur de chat, vous pouvez ajuster selon votre design */
+    padding: 10px; /* ajout d'un espace autour du contenu du conteneur */
+    color: white; /* couleur du texte */
+}
