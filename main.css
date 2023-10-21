@@ -1,0 +1,42 @@
+.h1-gpt {
+    color: #565869;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4vw;
+}
+
+body {
+    background-color: #444654;
+    position: relative;
+    height: 100vh;
+}
+
+.rectangle {
+    width: 150px;
+    height: 30px;
+    background-color: #40414f; /* Couleur de fond */
+    border-radius: 20px; /* Rayon des coins arrondis */
+    border: 2px solid #40414f; /* Bordure avec couleur */
+    text-align: center; /* Alignement du texte au centre */
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+}
+.rectangle p {
+    margin: 0;
+    color: #dfdfe4;
+    font-size: 2vw;
+}
+
+img {
+    width: 20px; /* Largeur de l'image */
+    height: auto; /* Hauteur automatique pour maintenir les proportions */
+    position: absolute;
+    left: 44%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+}
